@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>🐱喵喵喵喵🐱</title>
+    <style type="text/css">
+      .question{
+            text-align:center;
+            font-family:"HYZhangZiShanTiJ";
+            font-weight:bold;
+            color:#999999;
+          }
+
+          .icon-bar{
+            position: fixed;
+            bottom:px;
+            display: flex;
+            justify-content: center;
+          }
+          .icon{
+            width: 400px;
+            height: 400px;
+          }
+          body{
+            background-image: url("bg.png")
+          }
+    </style>
+  </head>
+
+<body>
+<audio id="maojiao1">
+  <source src="meow.WAV"type="audio/wav">
+</audio>
+<audio id="maojiao2">
+  <source src="别惹我.WAV"type="audio/wav">
+</audio><audio id="maojiao3">
+  <source src="摸摸我.WAV"type="audio/wav">
+</audio><audio id="maojiao4">
+  <source src="来我这.WAV"type="audio/wav">
+</audio>
+
+    <div class="question"id = 'x' >
+        <p style='text-align:center;font-size:50px'>🐈‍⬛miaomiaomiaomiao🐈‍⬛</p>
+        <p style='text-align:center;font-size:50px'>猜猜我在说什么</p>
+        <button onclick="hello()"style="width:250px;height:50px;font-family:'HYZhangZiShanTiJ';font-size:30px;">告诉我你的名字</button>
+      </div>
+<div class="question">
+   <p style="font-size:50px">点击猫猫播放声音<ul>(四只小猫会发出不同的)</p>
+  <button onclick="start()"style="width:250px;height:50px;font-family:'HYZhangZiShanTiJ';font-size:30px;">你认为我是在说</button>
+</div>
+<div class="icon-bar">
+  <img src="miaomiao.png"
+         class="icon"
+         onclick="playMeow(1)">
+
+         <img src="miaomiao.png"
+                class="icon"
+                onclick="playMeow(2)">
+
+                <img src="miaomiao.png"
+                       class="icon"
+                       onclick="playMeow(3)">
+
+                       <img src="miaomiao.png"
+                              class="icon"
+                              onclick="playMeow(4)">
+    </div>
+    <script type="text/javascript">
+    const questions=[{
+      question:"摸摸我的叫声是第几段音频？",
+      correctAnswer:3
+    },
+    {question:"别惹我的叫声是第几段音频？",
+    correctAnswer:2},
+    {
+      question:"来我这的叫声是第几段音频？",
+      correctAnswer:4
+    },
+    {
+      question:"呼唤幼崽的叫声是第几段音频？",
+      correctAnswer:1
+    }];
+    let currentQuestion=0;let score=0;
+
+function start(){
+  currentQuestion=0;
+  score=0;
+  askQuestion();
+}
+function playMeow(soundNumber){
+  var audioId="maojiao"+soundNumber;
+  var audio=document.getElementById(audioId);
+  audio.currentTime=0;
+  audio.play();
+}
+function askQuestion(){
+  if(currentQuestion>= questions.length){
+    alert("游戏结束！你的最终得分是："+score+"/"+questions.length);
+    return;
+  }
+    var q=questions[currentQuestion];
+    var userAnswer= parseInt(prompt(q.question+"请输入数字1-4"));
+
+                            if (userAnswer === q.correctAnswer) {
+                                score++;
+                                alert("✅回答正确！✅喵～");
+                            } else {
+                                alert("❌答错了❌,正确答案是"+q.correctAnswer);
+                            }
+    currentQuestion++;
+    askQuestion();}
+
+      function hello(){
+      var name = prompt("请问你是？");
+      alert('你好喵😽,'+name+'欢迎来到喵的音乐世界🪗。');
+    }
+  </script>
+</body>
+</html>
